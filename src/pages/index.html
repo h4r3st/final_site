@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hrst Studio - профессиональная разработка программного обеспечения"
+    />
+    <title>_hrst Studio</title>
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FONTS -->
+    <!-- ICON -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/public/favicon/apple-touch-icon.png"
+    />
+
+    <link rel="icon" sizes="16x16" href="/public/favicon/favicon.ico" />
+    <!-- ICON -->
+  </head>
+  <body>
+    <header><p>_hrst Studio</p></header>
+    <!-- Бургер-кнопка -->
+    <div class="burger-button" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Меню, которое будет появляться под кнопкой -->
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="/src/pages/java.html">Java</a></li>
+        <li><a href="#">Python</a></li>
+        <li><a href="#">C/C++</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+    </nav>
+
+    <!-- Затемнение и блюр для всей страницы -->
+    <div class="overlay" onclick="toggleMenu()"></div>
+    <main class="container">
+      <div class="text">
+        <p>Create your dreams</p>
+        <p></p>
+        <p>Start now</p>
+        <p></p>
+        <p>It's your choice</p>
+      </div>
+      <div class="QRcode">
+        <img src="/public/images/QRcode_a1.png" alt="QR-code" />
+      </div>
+    </main>
+    <footer class="footer-container">
+      <p>© 2021 _hrst Studio</p>
+    </footer>
+    <script>
+      // Кэшируем элементы при загрузке
+      const menuElements = {
+        menu: document.querySelector(".menu"),
+        button: document.querySelector(".burger-button"),
+        overlay: document.querySelector(".overlay"),
+      };
+
+      function toggleMenu() {
+        const { menu, button, overlay } = menuElements;
+
+        button.classList.toggle("active");
+        menu.classList.toggle("open");
+        overlay.classList.toggle("active");
+
+        // Обновляем доступность
+        const isOpen = menu.classList.contains("open");
+        menu.setAttribute("aria-hidden", !isOpen);
+        button.setAttribute("aria-expanded", isOpen);
+      }
+
+      // Закрытие меню по ESC
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          menuElements.menu.classList.contains("open")
+        ) {
+          toggleMenu();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Handjet';
+}
+
+body {
+    background-color: #333;
+}
+main {
+    font-size: 50px;
+    color: white;;
+    margin-bottom: 0; 
+  padding-bottom: 0;
+}
+
+header p{
+    height: 65px;
+    background-color: black;
+    color: white;
+    text-align: right;
+    padding: 1% 45px;
+    font-size: 30px;
+
+}
+
+.text {
+    flex: 1 1 30rem;
+    min-height: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    left: 15%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+
+}
+.container img {
+    max-width: 75%;
+    height: auto;
+    max-height: 37.5rem;
+    position: relative;
+    z-index: 99;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin-top: 5%;
+    background-color: black;
+    color: white;
+    height: 65px;
+}
+.footer-container p {
+    background-color: black;
+    margin-left: -1040px;
+
+}
+
+/* КНОПКА */
+/* Стили для бургер-кнопки */
+.burger-button {
+	position: relative;
+	top: -55px;
+	left: 40px;
+	z-index: 1000;
+	display: inline-block;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+/* Стили для полосок */
+.burger-button span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 4px 0;
+    transition: 0.4s;
+    background-color: #fff;
+}
+
+/* Анимация при наведении */
+.burger-button:hover span {
+    background-color: #555;
+}
+
+/* Анимация при клике (активное состояние) */
+.burger-button.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.burger-button.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-button.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* Стили для меню */
+.menu {
+    display: block; /* Меню всегда в DOM */
+    position: fixed; /* Фиксированное позиционирование */
+    top: 60px; /* Отступ от кнопки */
+    left: 10px; /* Отступ слева */ 
+    border-radius: 4px; /* Скругление углов */
+    padding: 10px;
+    z-index: 999; /* Чтобы меню было под кнопкой */
+    opacity: 0; /* Начальная прозрачность */
+    visibility: hidden; /* Скрыто */
+    transform: translateY(-50px); /* Начальное смещение */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Плавная анимация */
+}
+
+.menu.open {
+    opacity: 1; /* Показываем меню */
+    visibility: visible; /* Делаем видимым */
+    transform: translateY(0); /* Убираем смещение */
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    left: 38px;
+}
+
+.menu ul li {
+    margin: 10px 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 40px;
+}
+
+/* Затемнение и блюр для всей страницы */
+.overlay {
+    display: block; /* Всегда в DOM */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Затемнение */
+    backdrop-filter: blur(5px); /* Блюр */
+    z-index: 998; /* Под кнопкой и меню */
+    opacity: 0; /* Начальная прозрачность */
+    visibility: hidden; /* Скрыто */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Плавная анимация */
+}
+
+.overlay.active {
+    opacity: 1; /* Показываем затемнение */
+    visibility: visible; /* Делаем видимым */
+}

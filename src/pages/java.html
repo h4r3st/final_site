@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hrst Studio - профессиональная разработка программного обеспечения"
+    />
+    <title>_hrst Studio</title>
+    <link rel="stylesheet" href="/src/styles/style_java.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FONTS -->
+    <!-- ICON -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/public/favicon/apple-touch-icon.png"
+    />
+
+    <link rel="icon" sizes="16x16" href="/public/favicon/favicon.ico" />
+    <!-- ICON -->
+  </head>
+  <body>
+    <header><p>_hrst Studio</p></header>
+    <!-- Бургер-кнопка -->
+    <div class="burger-button" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Меню, которое будет появляться под кнопкой -->
+    <nav class="menu">
+      <ul>
+        <li><a href="/src/pages/index.html">Home</a></li>
+        <li><a href="java.html">Java</a></li>
+        <li><a href="#">Python</a></li>
+        <li><a href="#">C/C++</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+    </nav>
+
+    <!-- Затемнение и блюр для всей страницы -->
+    <div class="overlay" onclick="toggleMenu()"></div>
+    <div class="container">
+      <div class="text">
+        <p>
+          Java is a high-level programming language developed by Sun
+          Microsystems. It was originally designed for developing programs for
+          set-top boxes and handheld devices, but later became a popular choice
+          for creating web applications.
+        </p>
+
+        <div class="cta-section">
+          <p class="cta-text">Start</p>
+          <a
+            href="https://github.com/data-flair/java-tutorial"
+            class="cta-link"
+          >
+            Your first step
+          </a>
+          <div class="download-section">
+            <p>Download</p>
+            <a
+              href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html"
+              class="download-link"
+            >
+              JDK
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo">
+        <img
+          src="/public/images/java-1024-1487088243.png"
+          alt="java icon"
+          class="java-image"
+        />
+      </div>
+    </div>
+
+    <footer class="footer-container">
+      <p>© 2021 _hrst Studio</p>
+    </footer>
+    <script>
+      // Кэшируем элементы при загрузке
+      const menuElements = {
+        menu: document.querySelector(".menu"),
+        button: document.querySelector(".burger-button"),
+        overlay: document.querySelector(".overlay"),
+      };
+
+      function toggleMenu() {
+        const { menu, button, overlay } = menuElements;
+
+        button.classList.toggle("active");
+        menu.classList.toggle("open");
+        overlay.classList.toggle("active");
+
+        // Обновляем доступность
+        const isOpen = menu.classList.contains("open");
+        menu.setAttribute("aria-hidden", !isOpen);
+        button.setAttribute("aria-expanded", isOpen);
+      }
+
+      // Закрытие меню по ESC
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          menuElements.menu.classList.contains("open")
+        ) {
+          toggleMenu();
+        }
+      });
+    </script>
+  </body>
+</html>
