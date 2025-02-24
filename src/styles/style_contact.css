@@ -45,6 +45,19 @@ header p{
   .photo {
     flex: 0 0 auto;
     text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .photo:hover {
+    transform: scale(1.10);
+  }
+
+  .refer {
+    transition: transform 0.3s ease;
+  }
+
+  .refer:hover {
+    transform: scale(0.95);
   }
 
   .java-image {
