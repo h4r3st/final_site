@@ -16,13 +16,9 @@ main {
 }
 
 header p{
-    height: 65px;
     background-color: black;
     color: white;
-    text-align: right;
-    padding: 1% 45px;
     font-size: 30px;
-
 }
 
 .text {
@@ -39,6 +35,7 @@ header p{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     font-size: 75px;
 
 }
@@ -50,6 +47,11 @@ header p{
     z-index: 99;
     background-color: white;
     border-radius: 25px;
+}
+
+.subtext {
+    font-size: 25px;
+    width: 80%;
 }
 
 .footer-container {
@@ -71,9 +73,9 @@ header p{
 /* КНОПКА */
 /* Стили для бургер-кнопки */
 .burger-button {
-	position: relative;
-	top: -55px;
-	left: 40px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
 	z-index: 1000;
 	display: inline-block;
 	cursor: pointer;
@@ -168,4 +170,34 @@ header p{
 .overlay.active {
     opacity: 1; /* Показываем затемнение */
     visibility: visible; /* Делаем видимым */
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    background: #f0f0f0;
+    padding: 10px 0;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+    padding-left: 100%; /* Начальное смещение за пределы экрана */
+}
+
+.marquee-text {
+    display: inline-block;
+    padding-right: 50px; /* Расстояние между копиями текста */
+    font-size: 24px;
+    color: #333;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
