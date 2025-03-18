@@ -5,9 +5,11 @@
   font-family: "Handjet";
   cursor: url(https://cur.cursors-4u.net/others/oth-7/oth665.cur), auto !important;
 }
+
 body {
   background-color: #333;
 }
+
 main {
   font-size: 50px;
   color: white;
@@ -20,6 +22,7 @@ header p {
   color: white;
   font-size: 30px;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -34,17 +37,32 @@ header p {
   min-width: 300px;
   font-size: 44px;
   color: white;
+  margin: auto;
 }
 
 .photo {
   flex: 0 0 auto;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.1);
+}
+
+.refer {
+  transition: transform 0.3s ease;
+}
+
+.refer:hover {
+  transform: scale(0.95);
 }
 
 .java-image {
   max-width: 100%;
-  height: auto;
+  height: 500px;
   max-width: 520px;
+  border-radius: 24px;
 }
 
 .cta-section {
@@ -76,21 +94,24 @@ header p {
     top: 20px;
   }
 }
-.footer-container {
+
+.footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 65px;
   margin-top: 5%;
   background-color: black;
   color: white;
-  height: 65px;
+  /* text-align: center; */
 }
-.footer-container p {
-  background-color: black;
-  margin-left: -1040px;
+.footer p {
+  margin-right: 750px;
 }
-
 .sticky {
   display: flex;
   justify-content: center;
@@ -185,6 +206,25 @@ header p {
   font-size: 40px;
 }
 
+nav ul li a {
+  display: inline-block; /* обязательно для трансформаций */
+  transition: transform 0.3s ease; /* анимируем свойство transform */
+  /* Дополнительные стили */
+  font-size: 16px;
+  /* padding: 10px; */
+}
+
+nav ul li a:hover {
+  transform: scale(1.1); /* увеличение на 10% */
+  /* Можно добавить другие эффекты: */
+  /* color: red; */
+}
+
+nav ul li a:active {
+  transform: scale(0.9); /* увеличение на 10% */
+  /* Можно добавить другие эффекты: */
+  /* color: red; */
+}
 /* Затемнение и блюр для всей страницы */
 .overlay {
   display: block; /* Всегда в DOM */

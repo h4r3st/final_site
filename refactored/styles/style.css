@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Handjet";
+  cursor: url(https://cur.cursors-4u.net/others/oth-7/oth665.cur), auto !important;
+}
+
+body {
+  background-color: #333;
+}
+
+main {
+  font-size: 50px;
+  color: white;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+header p {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+}
+
+.text {
+  flex: 1 1 30rem;
+  min-height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  left: 15%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 75px;
+}
+
+.container img {
+  max-width: 75%;
+  height: auto;
+  max-height: 37.5rem;
+  position: relative;
+  z-index: 99;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.subtext {
+  font-size: 25px;
+  width: 80%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 65px;
+  margin-top: 5%;
+  background-color: black;
+  color: white;
+  /* text-align: center; */
+}
+.footer p {
+  margin-right: 750px;
+}
+
+.sticky {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 38px;
+  width: 187px;
+  background-color: #f00;
+  top: 96%;
+  z-index: 999999;
+  left: 85%;
+}
+
+/* КНОПКА */
+/* Стили для бургер-кнопки */
+.burger-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Стили для полосок */
+.burger-button span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 4px 0;
+  transition: 0.4s;
+  background-color: #fff;
+}
+
+/* Анимация при наведении */
+.burger-button:hover span {
+  background-color: #555;
+}
+
+/* Анимация при клике (активное состояние) */
+.burger-button.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.burger-button.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-button.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* Стили для меню */
+.menu {
+  display: block; /* Меню всегда в DOM */
+  position: fixed; /* Фиксированное позиционирование */
+  top: 60px; /* Отступ от кнопки */
+  left: 10px; /* Отступ слева */
+  border-radius: 4px; /* Скругление углов */
+  padding: 10px;
+  z-index: 999; /* Чтобы меню было под кнопкой */
+  opacity: 0; /* Начальная прозрачность */
+  visibility: hidden; /* Скрыто */
+  transform: translateY(-50px); /* Начальное смещение */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Плавная анимация */
+}
+
+.menu.open {
+  opacity: 1; /* Показываем меню */
+  visibility: visible; /* Делаем видимым */
+  transform: translateY(0); /* Убираем смещение */
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  left: 38px;
+}
+
+.menu ul li {
+  margin: 10px 0;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 40px;
+}
+
+nav ul li a {
+  display: inline-block; /* обязательно для трансформаций */
+  transition: transform 0.3s ease; /* анимируем свойство transform */
+  /* Дополнительные стили */
+  font-size: 16px;
+  /* padding: 10px; */
+}
+
+nav ul li a:hover {
+  transform: scale(1.1); /* увеличение на 10% */
+  /* Можно добавить другие эффекты: */
+  /* color: red; */
+}
+
+nav ul li a:active {
+  transform: scale(0.9); /* увеличение на 10% */
+  /* Можно добавить другие эффекты: */
+  /* color: red; */
+}
+/* Затемнение и блюр для всей страницы */
+.overlay {
+  display: block; /* Всегда в DOM */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Затемнение */
+  backdrop-filter: blur(5px); /* Блюр */
+  z-index: 998; /* Под кнопкой и меню */
+  opacity: 0; /* Начальная прозрачность */
+  visibility: hidden; /* Скрыто */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Плавная анимация */
+}
+
+.overlay.active {
+  opacity: 1; /* Показываем затемнение */
+  visibility: visible; /* Делаем видимым */
+}
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  background: #f0f0f0;
+  padding: 10px 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+  padding-left: 100%; /* Начальное смещение за пределы экрана */
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-right: 50px; /* Расстояние между копиями текста */
+  font-size: 24px;
+  color: #333;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.form-main {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  font-size: 25px;
+}
+.login {
+  width: 100%;
+  margin-top: 20%;
+  transition: transform 0.3s ease;
+}
+
+.login:hover {
+  color: #fff;
+  transform: scale(0.95);
+}

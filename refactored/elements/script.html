@@ -1,0 +1,31 @@
+<script>
+    // Кэшируем элементы при загрузке
+    const menuElements = {
+      menu: document.querySelector(".menu"),
+      button: document.querySelector(".burger-button"),
+      overlay: document.querySelector(".overlay"),
+    };
+
+    function toggleMenu() {
+      const { menu, button, overlay } = menuElements;
+
+      button.classList.toggle("active");
+      menu.classList.toggle("open");
+      overlay.classList.toggle("active");
+
+      // Обновляем доступность
+      const isOpen = menu.classList.contains("open");
+      menu.setAttribute("aria-hidden", !isOpen);
+      button.setAttribute("aria-expanded", isOpen);
+    }
+
+    // Закрытие меню по ESC
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        menuElements.menu.classList.contains("open")
+      ) {
+        toggleMenu();
+      }
+    });
+  </script>

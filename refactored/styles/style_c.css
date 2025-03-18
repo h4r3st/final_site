@@ -9,6 +9,7 @@
 body {
   background-color: #333;
 }
+
 main {
   font-size: 50px;
   color: white;
@@ -22,51 +23,79 @@ header p {
   font-size: 30px;
 }
 
-.text {
-  flex: 1 1 30rem;
-  min-height: 40rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  left: 15%;
-}
-
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 75px;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.container img {
-  max-width: 75%;
+
+.text {
+  flex: 1;
+  min-width: 300px;
+  font-size: 44px;
+  color: white;
+}
+
+.photo {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.java-image {
+  max-width: 100%;
   height: auto;
-  max-height: 37.5rem;
-  position: relative;
-  z-index: 99;
-  background-color: white;
-  border-radius: 25px;
+  max-width: 520px;
 }
 
-.subtext {
-  font-size: 25px;
-  width: 80%;
+.cta-section {
+  margin-top: 25px;
+  font-size: 30px;
+  color: gray;
 }
 
-.footer-container {
+.cta-link {
+  display: block;
+
+  text-decoration: underline;
+}
+
+.download-section {
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+    margin-top: 50px;
+  }
+
+  .photo {
+    position: static;
+    top: 20px;
+  }
+}
+
+.footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 65px;
   margin-top: 5%;
   background-color: black;
   color: white;
-  height: 65px;
+  /* text-align: center; */
 }
-.footer-container p {
-  background-color: black;
-  margin-left: -1040px;
+.footer p {
+  margin-right: 750px;
 }
 
 .sticky {
@@ -163,6 +192,25 @@ header p {
   font-size: 40px;
 }
 
+nav ul li a {
+  display: inline-block; /* обязательно для трансформаций */
+  transition: transform 0.3s ease; /* анимируем свойство transform */
+  /* Дополнительные стили */
+  font-size: 16px;
+  /* padding: 10px; */
+}
+
+nav ul li a:hover {
+  transform: scale(1.1); /* увеличение на 10% */
+  /* Можно добавить другие эффекты: */
+  /* color: red; */
+}
+
+nav ul li a:active {
+  transform: scale(0.9); /* увеличение на 10% */
+  /* Можно добавить другие эффекты: */
+  /* color: red; */
+}
 /* Затемнение и блюр для всей страницы */
 .overlay {
   display: block; /* Всегда в DOM */
@@ -212,4 +260,14 @@ header p {
   100% {
     transform: translateX(0);
   }
+}
+
+.fottext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 27px;
+  padding: 0 20% 0 20%;
+  color: #8a8a8a;
+  margin: 5% 0 0 0;
 }
