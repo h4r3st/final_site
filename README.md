@@ -4,8 +4,5 @@
   <strike><li> Create animations </li></strike>
   <strike><li> Create logo </li></strike>
   <strike><li> Change cursor </li></strike>
-  <li> Make loading screen </li>
-  <li> Add more info </li>
-
-  
+  <strike><li> Add more info </li></strike>
 </ul>
