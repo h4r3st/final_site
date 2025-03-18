@@ -191,7 +191,6 @@ header p {
   color: #ffffff;
   font-size: 40px;
 }
-
 nav ul li a {
   display: inline-block; /* обязательно для трансформаций */
   transition: transform 0.3s ease; /* анимируем свойство transform */
@@ -271,4 +270,31 @@ nav ul li a:active {
   padding: 0 20% 0 20%;
   color: #8a8a8a;
   margin: 5% 0 0 0;
+}
+
+.yt-player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.quote {
+  position: absolute;
+  left: 15%;
+}
+
+.yt-player img {
+  height: 195px;
+  background-color: #fff;
+  border-radius: 50px;
+  margin-left: 12%;
+  padding: 10px;
+}
+.yt-player a {
+  height: 195px;
+  border-radius: 50px;
+  margin-left: 12%;
+  padding: 10px;
 }

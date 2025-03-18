@@ -37,17 +37,32 @@ header p {
   min-width: 300px;
   font-size: 44px;
   color: white;
+  margin: auto;
 }
 
 .photo {
   flex: 0 0 auto;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.1);
+}
+
+.refer {
+  transition: transform 0.3s ease;
+}
+
+.refer:hover {
+  transform: scale(0.95);
 }
 
 .java-image {
   max-width: 100%;
-  height: auto;
+  height: 500px;
   max-width: 520px;
+  border-radius: 24px;
 }
 
 .cta-section {
@@ -97,7 +112,6 @@ header p {
 .footer p {
   margin-right: 750px;
 }
-
 .sticky {
   display: flex;
   justify-content: center;
@@ -262,12 +276,29 @@ nav ul li a:active {
   }
 }
 
-.fottext {
+.yt-player {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 27px;
-  padding: 0 20% 0 20%;
-  color: #8a8a8a;
-  margin: 5% 0 0 0;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.quote {
+  position: absolute;
+  left: 15%;
+}
+
+.yt-player img {
+  height: 195px;
+  background-color: #fff;
+  border-radius: 50px;
+  margin-left: 12%;
+  padding: 10px;
+}
+.yt-player a {
+  height: 195px;
+  border-radius: 50px;
+  margin-left: 12%;
+  padding: 10px;
 }

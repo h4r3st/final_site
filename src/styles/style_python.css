@@ -23,37 +23,61 @@ header p {
   font-size: 30px;
 }
 
-.text {
-  flex: 1 1 30rem;
-  min-height: 40rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  left: 15%;
-}
-
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 75px;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.container img {
-  max-width: 75%;
+.text {
+  flex: 1;
+  min-width: 300px;
+  font-size: 44px;
+  color: white;
+}
+
+.photo {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.java-image {
+  max-width: 100%;
   height: auto;
-  max-height: 37.5rem;
-  position: relative;
-  z-index: 99;
-  background-color: white;
-  border-radius: 25px;
+  max-width: 520px;
 }
 
-.subtext {
-  font-size: 25px;
-  width: 80%;
+.cta-section {
+  margin-top: 25px;
+  font-size: 30px;
+  color: gray;
+}
+
+.cta-link {
+  display: block;
+
+  text-decoration: underline;
+}
+
+.download-section {
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+    margin-top: 50px;
+  }
+
+  .photo {
+    position: static;
+    top: 20px;
+  }
 }
 
 .footer {
@@ -187,6 +211,7 @@ nav ul li a:active {
   /* Можно добавить другие эффекты: */
   /* color: red; */
 }
+
 /* Затемнение и блюр для всей страницы */
 .overlay {
   display: block; /* Всегда в DOM */
@@ -238,22 +263,39 @@ nav ul li a:active {
   }
 }
 
-.form-main {
-  height: 500px;
+.fottext {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-input {
-  font-size: 25px;
-}
-.login {
-  width: 100%;
-  margin-top: 20%;
-  transition: transform 0.3s ease;
+  font-size: 27px;
+  padding: 0 20% 0 20%;
+  color: #8a8a8a;
+  margin: 5% 0 0 0;
 }
 
-.login:hover {
-  color: #fff;
-  transform: scale(0.95);
+.yt-player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.quote {
+  position: absolute;
+  left: 15%;
+}
+
+.yt-player img {
+  height: 195px;
+  background-color: #fff;
+  border-radius: 50px;
+  margin-left: 12%;
+  padding: 10px;
+}
+.yt-player a {
+  height: 195px;
+  border-radius: 50px;
+  margin-left: 12%;
+  padding: 10px;
 }

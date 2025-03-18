@@ -10,7 +10,7 @@ include("./elements/head.html");
 
 <body>
   <?php
-  include("./elements/header.html");
+  include("./elements/header.php");
   include("./elements/button_and_fixed.html");
   ?>
   <div class="container">
@@ -50,6 +50,11 @@ include("./elements/head.html");
         class="java-image" />
     </div>
   </div>
+  <div class="yt-player">
+  <iframe width="720" height="405" src="https://www.youtube.com/embed/MNeX4EGtR5Y?si=N14YUqFO_1rHH0TS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <a href="https://www.w3schools.com/cpp/default.asp"><img src="https://www.svgrepo.com/show/330494/geeksforgeeks.svg" alt=""></a>
+  </div>
+  
   <div class="fottext">
     <p>
 

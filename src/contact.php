@@ -10,7 +10,7 @@ include("./elements/head.html");
 
 <body>
   <?php
-  include("./elements/header.html");
+  include("./elements/header.php");
   include("./elements/button_and_fixed.html");
   ?>
   <div class="container">
