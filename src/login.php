@@ -1,6 +1,8 @@
 <?php
-session_start()
+session_start();
+include("./database.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -23,14 +25,32 @@ include("./elements/head.html");
     </form>
   </main>
   <?php
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    if (empty($username) || empty($password)) {
-      echo "<script>alert('You didn\'t pass a Username and/or Password');</script>";
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+    if (empty($username)) {
+      echo "<script>alert('Please, provide username');</script>";
+    } elseif (empty($password)) {
+      echo "<script>alert('Please, provide password');</script>";
+    } else {
+      $hash = password_hash($password, PASSWORD_DEFAULT);
+      $sql = "INSERT INTO users (user, password) VALUES ('$username', '$hash')";
+      try {
+        mysqli_query($conn, $sql);
+        echo "<script>
+      alert('Регистрация прошла успешно!');
+      window.location.href = './index.php';
+  </script>";
+      } catch (mysqli_sql_exception) {
+        echo "<script>alert('This username is taken')</script>";
+      }
     }
   }
+  mysqli_close($conn);
+  ?>
+
+  <?php
+
 
   ?>
   <?php
