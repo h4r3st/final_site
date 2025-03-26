@@ -8,7 +8,7 @@ include("./database.php");
 <?php
 include("./elements/head.html");
 ?>
-<link rel="stylesheet" href="./styles/style.css" />
+<link rel="stylesheet" href="../src/styles/style.css" />
 
 <body>
   <?php

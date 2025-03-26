@@ -52,7 +52,9 @@ include("./elements/head.html");
     <a href="https://www.w3schools.com/python/default.asp"><img src="https://www.svgrepo.com/show/330494/geeksforgeeks.svg" alt=""></a>
   </div>
 
+
   <div class="fottext">
+
     <p>
       Python is one of the most popular and versatile programming languages in the world. Created by Guido van Rossum and first released in 1991, Python was designed to emphasize code readability and simplicity, making it an excellent choice for both beginners and experienced developers. Its extensive libraries, frameworks, and community support have made it a go-to language for a wide range of applications.
       <br>
@@ -71,6 +73,7 @@ include("./elements/head.html");
       Interpreted Language: Python is executed line by line, which simplifies debugging and testing.
       <br>
       <br>
+
       Where is Python Used?
       <br>
       <br>
@@ -93,6 +96,7 @@ include("./elements/head.html");
       Internet of Things (IoT): Python is used to program IoT devices and manage data from sensors.
       <br>
       <br>
+
       Demand for Python Developers:
       <br>
       <br>
@@ -110,12 +114,15 @@ include("./elements/head.html");
 
       High Salaries: Python developers are among the highest-paid professionals in the tech industry, reflecting the language’s importance and demand.
     </p>
+
   </div>
 
   <?php
   include("./elements/footer.html");
   include("./elements/script.html");
   ?>
+
+  
 </body>
 
 </html>
