@@ -50,8 +50,8 @@ include("./elements/head.html");
 
   <div class="yt-player">
     <iframe width="720" height="405" src="https://www.youtube.com/embed/l9AzO1FMgM8?si=DRIarMjQNuXZ_ryV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <a href="https://www.w3schools.com/java/default.asp"><img src="https://www.svgrepo.com/show/330494/geeksforgeeks.svg" alt=""></a>
-    </div>
+    <a href="https://www.w3schools.com/java/default.asp"><img src="https://www.svgrepo.com/show/330494/geeksforgeeks.svg" alt=""></a>
+  </div>
 
   <div class="fottext">
     <p>

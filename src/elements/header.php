@@ -7,12 +7,14 @@
         justify-content: flex-end;
         align-items: center;
       ">
-    <p class="quote"> <?php $quotes = array("// Don’t comment bad code – rewrite it // ", 
-                                            "// Fix the cause, not the symptom // ",
-                                            "// Code is read much more often than it is written // ",
-                                            "// Code is like humor. When you have to explain it, it’s bad // ");
-        $i = rand(0, 3);
-        echo $quotes[$i]; ?> </p>
+    <p class="quote"> <?php $quotes = array(
+                        "// Don’t comment bad code – rewrite it // ",
+                        "// Fix the cause, not the symptom // ",
+                        "// Code is read much more often than it is written // ",
+                        "// Code is like humor. When you have to explain it, it’s bad // "
+                      );
+                      $i = rand(0, 3);
+                      echo $quotes[$i]; ?> </p>
     <p style="display: inline-block">_hrst Studio</p>
     <img
       src="/public/images/image.png"

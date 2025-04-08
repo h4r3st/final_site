@@ -122,7 +122,7 @@ include("./elements/head.html");
   include("./elements/script.html");
   ?>
 
-  
+
 </body>
 
 </html>
