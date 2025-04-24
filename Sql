@@ -1,0 +1,60 @@
+--- 1 ---
+SELECT 
+    p.nummonth AS месяц,
+    p.idprod AS id_продукта,
+    SUM(p.quantity) AS плановое_количество,
+    COALESCE(SUM(r.quantity), 0) AS фактическое_количество,
+    ROUND(COALESCE(SUM(r.quantity) * 100.0 / NULLIF(SUM(p.quantity), 0), 0), 2) AS процент_выполнения
+FROM plan p
+LEFT JOIN release1 r 
+    ON p.idprod = r.idprod 
+    AND EXTRACT(MONTH FROM r.reldate) = p.nummonth
+GROUP BY p.nummonth, p.idprod
+ORDER BY p.nummonth, p.idprod;
+
+--- 2 ---
+WITH region_totals AS (
+    SELECT 
+        r.idregion,
+        c.idclient,
+        SUM(d.totaldel) AS total_delivery
+    FROM delivery d
+    INNER JOIN dogovor dog ON d.iddogovor = dog.idorder
+    INNER JOIN client1 c ON dog.idclient = c.idclient
+    INNER JOIN region r ON c.idregion = r.idregion
+    GROUP BY r.idregion, c.idclient
+)
+SELECT 
+    rt.idregion,
+    rt.idclient,
+    rt.total_delivery
+FROM (
+    SELECT 
+        idregion,
+        idclient,
+        total_delivery,
+        RANK() OVER (PARTITION BY idregion ORDER BY total_delivery DESC) AS rank
+    FROM region_totals
+) rt
+WHERE rt.rank = 1;
+
+--- 3 ---
+SELECT 
+    EXTRACT(YEAR FROM datedel) AS год,
+    EXTRACT(MONTH FROM datedel) AS месяц,
+    SUM(totaldel) AS общая_стоимость_отгрузок
+FROM delivery
+GROUP BY год, месяц
+ORDER BY год, месяц;
+
+--- 4 ---
+SELECT DISTINCT r.idprod
+FROM release1 r
+LEFT JOIN specdeliv s ON r.idprod = s.idprod
+WHERE s.idprod IS NULL;
+
+--- 5 --- 
+SELECT p.idprod
+FROM product p
+LEFT JOIN specdeliv s ON p.idprod = s.idprod
+WHERE s.idprod IS NULL;
