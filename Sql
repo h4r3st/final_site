@@ -58,3 +58,98 @@ SELECT p.idprod
 FROM product p
 LEFT JOIN specdeliv s ON p.idprod = s.idprod
 WHERE s.idprod IS NULL;
+
+-----------------------––––––––––––––––––––––––––––––––––--––-–-––-–-–-–-–-–-–--–-––--
+-- Удаляем старую версию, если существует
+DROP TRIGGER IF EXISTS orderspecification_change_trigger ON orderspecification;
+DROP FUNCTION IF EXISTS update_order_total();
+
+-- Создаем новую версию функции
+CREATE OR REPLACE FUNCTION update_order_total()
+RETURNS TRIGGER AS $$
+BEGIN
+    RAISE NOTICE 'Триггер сработал для заказа %', COALESCE(NEW.ordernumber, OLD.ordernumber);
+    
+    UPDATE orders
+    SET totalamount = (
+        SELECT COALESCE(SUM(total), 0)
+        FROM orderspecification
+        WHERE orderspecification.ordernumber = COALESCE(NEW.ordernumber, OLD.ordernumber)
+    )
+    WHERE orders.ordernumber = COALESCE(NEW.ordernumber, OLD.ordernumber);
+    
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Создаем триггер с дополнительным логированием
+CREATE TRIGGER orderspecification_change_trigger
+AFTER INSERT OR UPDATE OR DELETE ON orderspecification
+FOR EACH ROW
+EXECUTE FUNCTION update_order_total();
+-----------------------––––––––––––––––––––––––––––––––––--––-–-––-–-–-–-–-–-–--–-––--
+-- Создание триггерной функции для пересчета total в orderspecification
+CREATE OR REPLACE FUNCTION calculate_orderspec_total()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Пересчитываем столбец total как price * quantity
+    -- Это сработает как при INSERT, так и при UPDATE
+    NEW.total = NEW.price * NEW.quantity;
+
+    -- Возвращаем NEW, чтобы изменения были применены к строке
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Создание триггера для пересчета total в orderspecification
+CREATE TRIGGER calculate_orderspec_total_trigger
+BEFORE INSERT OR UPDATE ON orderspecification
+FOR EACH ROW
+EXECUTE FUNCTION calculate_orderspec_total();
+-----------------------––––––––––––––––––––––––––––––––––--––-–-––-–-–-–-–-–-–--–-––--
+-- Этот скрипт использует курсор для расчета и заполнения totalamount
+-- для всех существующих заказов в таблице orders.
+DO $$
+DECLARE
+    -- Объявляем переменные для хранения номера заказа и рассчитанной суммы из orderspecification
+    order_num INT;
+    calculated_total_amount NUMERIC(10,2); -- Используйте тип, соответствующий totalamount в таблице orders
+
+    -- Объявляем курсор
+    -- Курсор выбирает номер каждого заказа из orderspecification
+    -- и суммирует столбец total для каждого заказа.
+    -- COALESCE(SUM(total), 0) гарантирует, что если у заказа нет спецификаций (SUM вернет NULL),
+    -- то будет использовано значение 0.
+    order_cursor CURSOR FOR
+        SELECT ordernumber, COALESCE(SUM(total), 0)
+        FROM orderspecification
+        GROUP BY ordernumber;
+
+BEGIN
+    -- Открываем курсор для начала обработки
+    OPEN order_cursor;
+
+    -- Начинаем цикл для перебора всех строк, полученных курсором
+    LOOP
+        -- Извлекаем следующую строку из курсора в переменные
+        FETCH order_cursor INTO order_num, calculated_total_amount;
+
+        -- Выходим из цикла, если курсор больше не содержит строк
+        EXIT WHEN NOT FOUND;
+
+        -- Обновляем запись в таблице orders для текущего номера заказа,
+        -- устанавливая totalamount равным рассчитанной сумме из orderspecification
+        UPDATE orders
+        SET totalamount = calculated_total_amount
+        WHERE ordernumber = order_num;
+
+    END LOOP; -- Конец цикла
+
+    -- Закрываем курсор, освобождая ресурсы
+    CLOSE order_cursor;
+
+    -- Опционально: Можно добавить сообщение о завершении
+    -- RAISE NOTICE 'Заполнение totalamount в таблице orders завершено.';
+
+END $$; -- Конец анонимного блока DO
+
